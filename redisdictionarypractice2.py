@@ -1,0 +1,41 @@
+import redis 
+
+r = redis.Redis(
+    host="192.168.161.169",  
+    port=6379,
+    db=0
+)
+
+def parse_fetch_values(redis_key):
+    result = {}
+
+    
+    value = r.get(redis_key)
+
+    if value is None:
+        result[redis_key] = None
+        
+
+    # Redis returns bytes by default
+    if isinstance(value, bytes):
+        value = value.decode("utf-8")
+
+    parsed = {}
+
+    for item in value.split('|'):
+        key, val = item.split('=', 1)
+
+        if val.isdigit():
+            val = int(val)
+
+        parsed[key] = val
+
+    result[redis_key] = parsed
+
+    return result
+
+instrument_id=int(input("enter instrument id: "))
+segment_id=int(input("enter segment id: "))
+redis_key=f"{segment_id}_{instrument_id}"
+data = parse_fetch_values(redis_key)
+print(data)

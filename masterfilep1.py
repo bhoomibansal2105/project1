@@ -13,7 +13,7 @@ r = redis.Redis(
 
 # Read CSV
 df = pd.read_csv(
-    "master_nse_new.csv",
+    "master_nse_final.csv",
     low_memory=False
 )
 

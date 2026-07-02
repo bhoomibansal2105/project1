@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Read CSV
-df = pd.read_csv("master_nse.csv")
+df = pd.read_csv("master_nse_final.csv")
 
 # Remove data after 'T' in expiry_date column
 df["expiry_date"] = df["expiry_date"].astype(str).str.split("T").str[0]

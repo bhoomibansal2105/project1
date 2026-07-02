@@ -14,8 +14,8 @@ r = redis.Redis(
 )
 
 r2 = redis.Redis(
-    host="192.168.161.169",
-    port=6380,
+    host="192.168.161.200",
+    port=6379,
     db=0
 )
 

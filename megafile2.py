@@ -16,7 +16,7 @@ r = redis.Redis(
 # Read Master File
 # ==========================================================
 df = pd.read_csv(
-    "master_nse_new.csv",
+    "master_nse_final.csv",
     low_memory=False
 )
 

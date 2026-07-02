@@ -13,7 +13,7 @@ r = redis.Redis(
 
 # Read CSV
 df = pd.read_csv(
-    "master_nse_new.csv",
+    "master_nse_final.csv",
     low_memory=False
 )
 
@@ -47,7 +47,6 @@ json_data = msgspec.json.encode(mapping)
 r.set("instrumentname_to_segment", json_data)
 
 print(f"Stored {len(mapping)} records in Redis")
-
 
 data = r.get("instrumentname_to_segment")
 
